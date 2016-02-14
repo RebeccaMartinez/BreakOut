@@ -7,7 +7,7 @@ public class GM : MonoBehaviour {
 	//variables
 	public float resetDelay = 1f; //Time before de game resets when we finish
 	public int bricks; //new bricks
-	public GameObject bricksPrefab;
+	//public GameObject bricksPrefab;
 	public GameObject bar;
 	public static GM instance = null;
 	public GameObject win;
@@ -26,7 +26,7 @@ public class GM : MonoBehaviour {
 
 	public void Setup(){
 		newBar = Instantiate (bar, transform.position, Quaternion.identity) as GameObject;
-		Instantiate(bricksPrefab, transform.position, Quaternion.identity);
+		//Instantiate(bricksPrefab, transform.position, Quaternion.identity);
 	}
 
 	void FinishGame(){

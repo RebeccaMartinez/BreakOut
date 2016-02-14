@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LoadOnClickLevels.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GM.cs">
     <Files>
-      <File FileName="Assets\Scripts\LoadOnClickLM.cs" Line="6" Column="14" />
-      <File FileName="Assets\Scripts\LoadOnClickLevels.cs" Line="14" Column="1" />
+      <File FileName="Assets\Scripts\GM.cs" Line="17" Column="17" />
+      <File FileName="Assets\Scripts\LoadOnClickLM.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\LoadOnClickLevels.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
