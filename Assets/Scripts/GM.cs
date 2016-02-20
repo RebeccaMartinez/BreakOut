@@ -2,15 +2,15 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using System;
 public class GM : MonoBehaviour {
 	//variables
-	public float resetDelay = 1f; //Time before de game resets when we finish
+	public float resetDelay = 0.1f; //Time before de game resets when we finish
 	public int bricks; //new bricks
-	//public GameObject bricksPrefab;
 	public GameObject bar;
 	public static GM instance = null;
 	public GameObject win;
+    public int nextLevel;
 
 	private GameObject newBar;
 	// Use this for initialization
@@ -26,24 +26,31 @@ public class GM : MonoBehaviour {
 
 	public void Setup(){
 		newBar = Instantiate (bar, transform.position, Quaternion.identity) as GameObject;
-		//Instantiate(bricksPrefab, transform.position, Quaternion.identity);
 	}
 
 	void FinishGame(){
 		if (bricks < 1) {
-			win.SetActive(true);
-			Time.timeScale = .25f;
-			Invoke ("Reset", resetDelay);
-		}
+            //Are we in the last level?
+            if (nextLevel == 0) {
+                win.SetActive(true);
+                Time.timeScale = .5f;
+                SceneManager.LoadScene("MainMenu");
+            }
+            else {
+                Time.timeScale = .2f;
+                Invoke("LoadLevel", resetDelay);
+            }
+        }
 	}
 
-	void Reset(){
-		Time.timeScale = 1f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // The last level is reloaded
+	void LoadLevel(){
+		//Time.timeScale = 1f;
+        string aux = String.Concat("Level", nextLevel);
+        SceneManager.LoadScene(aux);
+        Time.timeScale = 1f;
+    }
 
-	}
-
-	public void DestroyBrick(){
+    public void DestroyBrick(){
 		bricks--;
 		FinishGame();
 	}
