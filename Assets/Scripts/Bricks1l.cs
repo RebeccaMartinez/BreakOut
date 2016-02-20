@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Bricks : MonoBehaviour {
+public class Bricks1l : MonoBehaviour {
 
 	void OnCollisionEnter(){
 		GM.instance.DestroyBrick();
