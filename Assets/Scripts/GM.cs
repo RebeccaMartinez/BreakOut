@@ -52,6 +52,7 @@ public class GM : MonoBehaviour {
 
     public void DestroyBrick(){
 		bricks--;
+        Score.points ++;
 		FinishGame();
 	}
 
