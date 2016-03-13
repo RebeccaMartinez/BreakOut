@@ -9,7 +9,6 @@ public class GM : MonoBehaviour {
 	public int bricks; //new bricks
 	public GameObject bar;
 	public static GM instance = null;
-	public GameObject win;
     public int nextLevel;
 
 	private GameObject newBar;
@@ -32,16 +31,20 @@ public class GM : MonoBehaviour {
 		if (bricks < 1) {
             //Are we in the last level?
             if (nextLevel == 0) {
-                win.SetActive(true);
+                Global.win = true;
                 Time.timeScale = .5f;
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("FinishGame");
             }
             else {
                 Time.timeScale = .2f;
                 Invoke("LoadLevel", resetDelay);
             }
         }
-	}
+
+        if(Global.lives == 0) {
+            SceneManager.LoadScene("FinishGame");
+        }
+    }
 
 	void LoadLevel(){
 		//Time.timeScale = 1f;
@@ -52,12 +55,13 @@ public class GM : MonoBehaviour {
 
     public void DestroyBrick(){
 		bricks--;
-        Score.points ++;
+        Global.points ++;
 		FinishGame();
 	}
 
 	public void Lose(){
 		Destroy (newBar);
+        Global.lives--;
 		Invoke ("BarSetup", resetDelay);
 		FinishGame();
 	}

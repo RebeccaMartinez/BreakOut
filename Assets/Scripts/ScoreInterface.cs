@@ -5,14 +5,11 @@ using UnityEngine.UI;
 public class ScoreInterface : MonoBehaviour {
 
     public Text score;
-	// Use this for initialization
-	void Start () {
-	
-	}
+
 	
 	// Update is called once per frame
 	void Update () {
-        score.text = "Score: " + Score.points;
+        score.text = "Score: " + Global.points;
 	
 	}
 }
