@@ -54,6 +54,8 @@
      <Compile Include="Assets\Scripts\File.cs" />
      <Compile Include="Assets\Scripts\GM.cs" />
      <Compile Include="Assets\Scripts\Global.cs" />
+     <Compile Include="Assets\Scripts\Keyboard.cs" />
+     <Compile Include="Assets\Scripts\KeyboardManager.cs" />
      <Compile Include="Assets\Scripts\MenuLoadScenes.cs" />
      <Compile Include="Assets\Scripts\ScoreInterface.cs" />
      <Compile Include="Assets\Scripts\livesInterface.cs" />

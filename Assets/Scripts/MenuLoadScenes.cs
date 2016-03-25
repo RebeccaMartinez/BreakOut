@@ -12,7 +12,4 @@ public class MenuLoadScenes : MonoBehaviour {
 		SceneManager.LoadScene("Level1"); 
 	}
 
-    public void ClickMP(){
-        SceneManager.LoadScene("ModoPractica1");
-    }
 }

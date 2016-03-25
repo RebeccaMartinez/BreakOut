@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class winInterface : MonoBehaviour {
 
     public Text fin;
-    private string textFieldString = "text field";
-	
+
 	// Update is called once per frame
 	void Update () {
         if (Global.win) {
