@@ -10,6 +10,7 @@ public class KeyboardManager : MonoBehaviour {
 	private string text;
 	private float delay;
 
+
 	// Use this for initialization
 	void Start () {
 		text = "";
@@ -31,7 +32,6 @@ public class KeyboardManager : MonoBehaviour {
 
 				if (delay > waitTime) {
 					if (results [i].gameObject.name == "Save") {
-						//TODO: guardar en archivo
 						SceneManager.LoadScene ("FinishGame"); 
 					}
 
@@ -63,5 +63,15 @@ public class KeyboardManager : MonoBehaviour {
 			}
 		}
 	
+	}
+
+	public string getText(){
+		return text;
+	}
+
+	void OnGUI(){
+		GUI.skin.label.fontSize = 50;
+		//cambiar 1000 por tamaño adecuado
+		GUI.Label (new Rect (400, 100, 1000, 1000), getText ());
 	}
 }
