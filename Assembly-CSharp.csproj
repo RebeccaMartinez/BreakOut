@@ -56,12 +56,15 @@
      <Compile Include="Assets\Scripts\Bricks2l.cs" />
      <Compile Include="Assets\Scripts\Bricks3l.cs" />
      <Compile Include="Assets\Scripts\Dead.cs" />
+     <Compile Include="Assets\Scripts\EyePositionData.cs" />
      <Compile Include="Assets\Scripts\FinishGameManager.cs" />
      <Compile Include="Assets\Scripts\GM.cs" />
      <Compile Include="Assets\Scripts\Global.cs" />
      <Compile Include="Assets\Scripts\KeyboardManager.cs" />
      <Compile Include="Assets\Scripts\MainMenuManager.cs" />
+     <Compile Include="Assets\Scripts\Resolution.cs" />
      <Compile Include="Assets\Scripts\SaveFile.cs" />
+     <Compile Include="Assets\Scripts\SaveMedicalData.cs" />
      <Compile Include="Assets\Scripts\ScoreInterface.cs" />
      <Compile Include="Assets\Scripts\livesInterface.cs" />
      <Compile Include="Assets\Scripts\winInterface.cs" />

@@ -24,7 +24,6 @@ public class Bar : MonoBehaviour, IGazeListener{
     void Update () {
 		/* @TheEyeTribe Check for collision and position waypoint */ 
 		Point2D gazeCoords = GazeDataValidator.Instance.GetLastValidSmoothedGazeCoordinates();
-		Debug.Log(gazeCoords);
 		Vector3 mouse;
 		playerPos = transform.position;
 		float radio = GetComponent<Renderer> ().bounds.extents.x;
@@ -33,6 +32,9 @@ public class Bar : MonoBehaviour, IGazeListener{
 			Point2D gp = UnityGazeUtils.GetGazeCoordsToUnityWindowCoords (gazeCoords);
 			mouse = new Vector3 ((float)gp.X, (float)gp.Y, CamaraPosition.z);
 			mouse = Camera.main.ScreenToWorldPoint(mouse);
+			if (Global.saveData == true) {
+				SaveMedicalData.instance.Save ((float)gp.X, (float)gp.Y);
+			}
 
 		} 
 		else {
