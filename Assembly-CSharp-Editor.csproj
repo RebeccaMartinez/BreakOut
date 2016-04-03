@@ -6,10 +6,10 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{96F981D8-A23E-8122-F301-A6DAE320AF66}</ProjectGuid>
+    <ProjectGuid>{1FE2DE31-A105-D2A2-ACFB-21DB1B4A5FAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>Assets</BaseDirectory>
@@ -45,36 +45,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EyeTribe\Plugins\Scripts\CalibCamera.cs" />
-     <Compile Include="Assets\EyeTribe\Plugins\Scripts\EyeTribeUnityScript.cs" />
-     <Compile Include="Assets\EyeTribe\Plugins\Scripts\GazeDataValidator.cs" />
-     <Compile Include="Assets\EyeTribe\Plugins\Scripts\UnityGazeUtils.cs" />
-     <Compile Include="Assets\EyeTribe\Scripts\StartConnection.cs" />
-     <Compile Include="Assets\Scripts\Ball.cs" />
-     <Compile Include="Assets\Scripts\Bar.cs" />
-     <Compile Include="Assets\Scripts\Bricks1l.cs" />
-     <Compile Include="Assets\Scripts\Bricks2l.cs" />
-     <Compile Include="Assets\Scripts\Bricks3l.cs" />
-     <Compile Include="Assets\Scripts\Dead.cs" />
-     <Compile Include="Assets\Scripts\FinishGameManager.cs" />
-     <Compile Include="Assets\Scripts\GM.cs" />
-     <Compile Include="Assets\Scripts\Global.cs" />
-     <Compile Include="Assets\Scripts\KeyboardManager.cs" />
-     <Compile Include="Assets\Scripts\MainMenuManager.cs" />
-     <Compile Include="Assets\Scripts\Resolution.cs" />
-     <Compile Include="Assets\Scripts\SaveFile.cs" />
-     <Compile Include="Assets\Scripts\SaveMedicalData.cs" />
-     <Compile Include="Assets\Scripts\ScoreInterface.cs" />
-     <Compile Include="Assets\Scripts\livesInterface.cs" />
-     <Compile Include="Assets\Scripts\winInterface.cs" />
+     <Compile Include="Assets\Scripts\Editor\NewEditorTest.cs" />
      <None Include="Assets\EyeTribe\Plugins\TETCSharpClient-License.txt" />
      <None Include="Assets\EyeTribe\Plugins\Scripts\tet-unity-aircraft-License.txt" />
      <None Include="Assets\EyeTribe\Plugins\Newtonsoft-Json-License.txt" />
+ <Reference Include="UnityEditor.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.EditorTestsRunner">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/EditorTestsRunner/Editor/UnityEditor.EditorTestsRunner.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.TreeEditor">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
  <HintPath>C:/Users/Rebecca/Documents/BreakOut/Assets/EyeTribe/Plugins/Newtonsoft.Json.dll</HintPath>
@@ -82,6 +79,31 @@
  <Reference Include="TETCSharpClient">
  <HintPath>C:/Users/Rebecca/Documents/BreakOut/Assets/EyeTribe/Plugins/TETCSharpClient.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Android.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.AppleTV.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.AppleTV.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.LinuxStandalone.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.OSXStandalone.Extensions">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{96F981D8-A23E-8122-F301-A6DAE320AF66}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

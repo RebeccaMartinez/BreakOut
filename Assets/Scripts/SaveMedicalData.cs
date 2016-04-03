@@ -16,7 +16,6 @@ public class SaveMedicalData : MonoBehaviour {
 		}
 	}
 
-	public EyePositionData medicalData;
 	public string URL;
 	// Use this for initialization
 	void Start () {

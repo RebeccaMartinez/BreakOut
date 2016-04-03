@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class FinishGameManager : MonoBehaviour {
 
-	private float waitTime = 0.9f;
+	private float waitTime = 0.6f;
 	private float delay;
 
 	// Use this for initialization

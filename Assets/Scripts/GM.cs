@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System;
 public class GM : MonoBehaviour {
 	//variables
-	public float resetDelay = 0.1f; //Time before de game resets when we finish
+	//public float resetDelay = 0.1f; //Time before de game resets when we finish
 	public int bricks; //new bricks
 	public GameObject bar;
 	public static GM instance = null;
@@ -32,12 +32,11 @@ public class GM : MonoBehaviour {
             //Are we in the last level?
             if (nextLevel == 0) {
                 Global.win = true;
-                Time.timeScale = .5f;
                 SceneManager.LoadScene("FinishGame");
             }
             else {
-                Time.timeScale = .2f;
-                Invoke("LoadLevel", resetDelay);
+				string aux = String.Concat("Level", nextLevel);
+				SceneManager.LoadScene(aux);
             }
         }
 
@@ -46,12 +45,11 @@ public class GM : MonoBehaviour {
         }
     }
 
-	void LoadLevel(){
+	/*void LoadLevel(){
 		//Time.timeScale = 1f;
         string aux = String.Concat("Level", nextLevel);
         SceneManager.LoadScene(aux);
-        Time.timeScale = 1f;
-    }
+    }*/
 
     public void DestroyBrick(){
 		bricks--;
@@ -62,7 +60,7 @@ public class GM : MonoBehaviour {
 	public void Lose(){
 		Destroy (newBar);
         Global.lives--;
-		Invoke ("BarSetup", resetDelay);
+		Invoke ("BarSetup", 0.3f);
 		FinishGame();
 	}
 
