@@ -6,22 +6,20 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveMedicalData : MonoBehaviour {
 	StreamWriter stream = null;
 	public static SaveMedicalData instance;
-	void Awake(){
-		if (instance == null) {
-			instance = this;
-			DontDestroyOnLoad (gameObject);
-		} 
-		else {
-			Destroy (gameObject);
-		}
-	}
 
 	public string URL;
 	// Use this for initialization
 	void Start () {
-		URL = Application.persistentDataPath + "/Medicaldata.txt";
-		if (stream == null) {
-			stream = File.AppendText(URL);
+		if (instance == null) {
+			instance = this;
+			DontDestroyOnLoad (gameObject);
+			URL = Application.persistentDataPath + "/Medicaldata.txt";
+			if (stream == null) {
+				stream = File.AppendText(URL);
+			}
+		} 
+		else {
+			Destroy (gameObject);
 		}
 	}
 			

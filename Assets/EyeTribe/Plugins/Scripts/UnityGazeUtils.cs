@@ -61,7 +61,7 @@ class UnityGazeUtils : GazeUtils
     /// <returns>2d point mapped to unity window space or null if input null</returns>
     public static Point2D GetGazeCoordsToUnityWindowCoords(Point2D gp)
     {
-        if (null != gp)
+       	if (null != gp)
         { 
             double rx = gp.X * ((double)Screen.width / GazeManager.Instance.ScreenResolutionWidth);
             double ry = (GazeManager.Instance.ScreenResolutionHeight - gp.Y) * ((double)Screen.height / GazeManager.Instance.ScreenResolutionHeight);

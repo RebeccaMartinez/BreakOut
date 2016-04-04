@@ -71,6 +71,7 @@ class GazeDataValidator
 
     public virtual void Update(GazeData frame)
     {
+		//_LastValidSmoothedGazeCoords = frame.SmoothedCoordinates;
         _GazeFrameCache.Enqueue(frame);
 
         // update valid gazedata based on store
