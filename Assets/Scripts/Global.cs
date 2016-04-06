@@ -5,5 +5,5 @@ public static class Global {
 	public static int lives = 5;
     public static bool win = false;
 	public static bool saveData = true;
-	public static bool useMouse = false;
+	public static bool useMouse = true;
 }

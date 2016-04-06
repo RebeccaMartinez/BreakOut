@@ -8,7 +8,10 @@ public class Bricks2l : MonoBehaviour {
 
     void OnCollisionEnter()
     {
+		Vector3 scale = transform.localScale;
         newBrick = Instantiate(Brick, transform.position, Quaternion.identity) as GameObject;
+		newBrick.transform.parent = transform.parent;
+		newBrick.transform.localScale = scale;
         GM.instance.DestroyBrick();
         Destroy(gameObject);
     }

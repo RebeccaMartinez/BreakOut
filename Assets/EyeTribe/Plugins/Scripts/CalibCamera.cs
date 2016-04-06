@@ -261,7 +261,7 @@ public class CalibCamera : MonoBehaviour, IGazeListener, ICalibrationProcessHand
 
                 if (GUI.Button(new Rect(x + btnPadding, y + btnPadding, btnWidth, btnHeight), btnText))
                 {
-				Global.useMouse = true;
+				//Global.useMouse = true;
                     SceneManager.LoadScene ("MainMenu");
                 }
         }
@@ -336,7 +336,7 @@ public class CalibCamera : MonoBehaviour, IGazeListener, ICalibrationProcessHand
                 //Handle on main UI thread
                 QueueCallback(new Callback(delegate
                 {
-					Global.useMouse = false;
+					//Global.useMouse = false;
                     SceneManager.LoadScene ("MainMenu");
                 }));
             }
