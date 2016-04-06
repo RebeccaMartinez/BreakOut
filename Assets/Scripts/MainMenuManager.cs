@@ -29,7 +29,7 @@ public class MainMenuManager : MonoBehaviour, IGazeListener {
 		//Current pointer position
 		PointerEventData point = new PointerEventData(null);
 
-		if (null != gazeCoords) {
+		if (!Global.useMouse) {
 			Point2D gp = UnityGazeUtils.GetGazeCoordsToUnityWindowCoords (gazeCoords);
 			point.position = new Vector3 ((float)gp.X, (float)gp.Y, CamaraPosition.nearClipPlane + 1f);
 		} 

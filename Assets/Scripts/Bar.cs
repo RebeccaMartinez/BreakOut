@@ -27,7 +27,7 @@ public class Bar : MonoBehaviour, IGazeListener{
 		Vector3 mouse;
 		playerPos = transform.position;
 		float radio = GetComponent<Renderer> ().bounds.extents.x;
-		if (null != gazeCoords) {
+		if (!Global.useMouse) {
 			// Map gaze indicator
 			Point2D gp = UnityGazeUtils.GetGazeCoordsToUnityWindowCoords (gazeCoords);
 			mouse = new Vector3 ((float)gp.X, (float)gp.Y, CamaraPosition.z);
