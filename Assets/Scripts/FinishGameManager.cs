@@ -13,24 +13,18 @@ public class FinishGameManager : MonoBehaviour,  IGazeListener {
 	private float waitTime = 0.6f;
 	private float delay;
 	Camera CamaraPosition;
-
+	private Text text;  
 	// Use this for initialization
 	void Start () {
 		delay = 0f;
 		GazeManager.Instance.AddGazeListener(this);
 		CamaraPosition = GameObject.Find ("Main Camera").GetComponent<Camera>();
+		text = GameObject.Find ("menu").GetComponent<Text>();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/*GraphicRaycaster gr = this.GetComponent<GraphicRaycaster>();
-		//Current pointer position
-		PointerEventData point = new PointerEventData(null);
-		point.position = Input.mousePosition;
-		//result will contain all of the hit canvas
-		List<RaycastResult> results = new List<RaycastResult> ();
-		gr.Raycast (point, results);*/
 		Point2D gazeCoords = GazeDataValidator.Instance.GetLastValidSmoothedGazeCoordinates();
 		GraphicRaycaster gr = this.GetComponent<GraphicRaycaster>();
 		//Current pointer position
@@ -52,7 +46,7 @@ public class FinishGameManager : MonoBehaviour,  IGazeListener {
 		if (results.Count > 0) {
 			for (int i = 0; i < results.Count; i++) {
 
-				if (delay > waitTime) {
+				/*if (delay > waitTime) {
 					if (results [i].gameObject.name == "menu") {
 						SceneManager.LoadScene ("MainMenu"); 
 					} 
@@ -61,7 +55,28 @@ public class FinishGameManager : MonoBehaviour,  IGazeListener {
 					}
 				} else {
 					delay += Time.deltaTime;
+				}*/
+				if (results [i].gameObject.name == "menu") {
+					text.color = Color.blue;
+						//new Color(0,55,0,255);
+					if (delay > waitTime) {
+						SceneManager.LoadScene ("MainMenu"); 
+					} else {
+						delay += Time.deltaTime;
+					}
+
+				} else {
+					text.color = Color.white;
+
 				}
+				if(results [i].gameObject.name == "keyboard"){
+					if (delay > waitTime) {
+						SceneManager.LoadScene ("Keyboard"); 
+					} else {
+						delay += Time.deltaTime;
+					}
+				}
+
 			}
 		}
 	}

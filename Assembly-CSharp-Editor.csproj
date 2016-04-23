@@ -45,7 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Editor\NewEditorTest.cs" />
+     <Compile Include="Assets\Scripts\Editor\ChangeColor.cs" />
      <None Include="Assets\EyeTribe\Plugins\TETCSharpClient-License.txt" />
      <None Include="Assets\EyeTribe\Plugins\Scripts\tet-unity-aircraft-License.txt" />
      <None Include="Assets\EyeTribe\Plugins\Newtonsoft-Json-License.txt" />
@@ -74,10 +74,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/Rebecca/Documents/BreakOut/Assets/EyeTribe/Plugins/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/Rebecca/Documents/Unity/BreakOut/Assets/EyeTribe/Plugins/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="TETCSharpClient">
- <HintPath>C:/Users/Rebecca/Documents/BreakOut/Assets/EyeTribe/Plugins/TETCSharpClient.dll</HintPath>
+ <HintPath>C:/Users/Rebecca/Documents/Unity/BreakOut/Assets/EyeTribe/Plugins/TETCSharpClient.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>

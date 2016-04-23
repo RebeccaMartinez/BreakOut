@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\Bricks1l.cs" />
      <Compile Include="Assets\Scripts\Bricks2l.cs" />
      <Compile Include="Assets\Scripts\Bricks3l.cs" />
+     <Compile Include="Assets\Scripts\ButonController.cs" />
      <Compile Include="Assets\Scripts\Dead.cs" />
      <Compile Include="Assets\Scripts\FinishGameManager.cs" />
      <Compile Include="Assets\Scripts\GM.cs" />
