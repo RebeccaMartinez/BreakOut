@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\SaveFile.cs" />
      <Compile Include="Assets\Scripts\SaveMedicalData.cs" />
      <Compile Include="Assets\Scripts\ScoreInterface.cs" />
+     <Compile Include="Assets\Scripts\WallPosition.cs" />
      <Compile Include="Assets\Scripts\livesInterface.cs" />
      <Compile Include="Assets\Scripts\winInterface.cs" />
      <None Include="Assets\EyeTribe\Plugins\TETCSharpClient-License.txt" />
@@ -77,10 +78,10 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/Rebecca/Documents/BreakOut/Assets/EyeTribe/Plugins/Newtonsoft.Json.dll</HintPath>
+ <HintPath>C:/Users/Rebecca/Documents/Unity/BreakOut/Assets/EyeTribe/Plugins/Newtonsoft.Json.dll</HintPath>
  </Reference>
  <Reference Include="TETCSharpClient">
- <HintPath>C:/Users/Rebecca/Documents/BreakOut/Assets/EyeTribe/Plugins/TETCSharpClient.dll</HintPath>
+ <HintPath>C:/Users/Rebecca/Documents/Unity/BreakOut/Assets/EyeTribe/Plugins/TETCSharpClient.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,7 +7,7 @@ using TETCSharpClient.Data;
 public class Bar : MonoBehaviour, IGazeListener{
 
 	//Variables
-	Vector3 speed = new Vector3(.5f, 0, 0);
+	Vector3 speed = new Vector3(.55f, 0, 0);
 	public float barSpeed = 1f; //Velocidad de la barra
 	private Vector3 playerPos = new Vector3(0, -12f, 0); //Posición inicial
     //private Vector3 mousePosition;
@@ -48,11 +48,11 @@ public class Bar : MonoBehaviour, IGazeListener{
 			transform.Translate (speed);
 		}
 			
-		if (transform.position.x > 18f) {
-			transform.position = new Vector3(18f, transform.position.y, transform.position.z);;
+		if (transform.position.x > WallPosition.rightWallX) {
+			transform.position = new Vector3(WallPosition.rightWallX, transform.position.y, transform.position.z);;
 		}
-		if (transform.position.x < -18f) {
-			transform.position = new Vector3(-18f, transform.position.y, transform.position.z);
+		if (transform.position.x < WallPosition.leftWallX) {
+			transform.position = new Vector3(WallPosition.leftWallX, transform.position.y, transform.position.z);
 		}
 
 
