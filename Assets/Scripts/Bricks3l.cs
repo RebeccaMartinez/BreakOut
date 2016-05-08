@@ -3,12 +3,15 @@ using System.Collections;
 
 public class Bricks3l : MonoBehaviour {
 
-    public GameObject greenBrick;
+    public GameObject Brick;
     private GameObject newBrick;
 
 	void OnCollisionEnter(){
-        newBrick = Instantiate(greenBrick, transform.position, Quaternion.identity) as GameObject;
-        GM.instance.DestroyBrick();
-        Destroy(gameObject);
+		Vector3 scale = transform.localScale;
+		newBrick = Instantiate(Brick, transform.position, Quaternion.identity) as GameObject;
+		newBrick.transform.parent = transform.parent;
+		newBrick.transform.localScale = scale;
+		GM.instance.DestroyBrick();
+		Destroy(gameObject);
     }
 }

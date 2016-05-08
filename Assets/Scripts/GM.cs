@@ -10,7 +10,6 @@ public class GM : MonoBehaviour {
 	public GameObject bar;
 	public static GM instance = null;
     public int nextLevel;
-
 	private GameObject newBar;
 	// Use this for initialization
 	void Start () {
@@ -59,8 +58,14 @@ public class GM : MonoBehaviour {
 
 	public void Lose(){
 		Destroy (newBar);
+		Destroy(GameObject.FindGameObjectWithTag("ball"));
         Global.lives--;
-		Invoke ("BarSetup", 0.3f);
+		if (Global.points >= 5) {
+			Global.points = Global.points - 5;
+		} else {
+			Global.points = 0;
+		}
+		Invoke ("BarSetup", 0.5f);
 		FinishGame();
 	}
 

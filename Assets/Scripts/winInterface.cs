@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class winInterface : MonoBehaviour {
 
     public Text fin;
+	public Text finalPoints;
 
 	// Update is called once per frame
-	void Update () {
+	void Start () {
         if (Global.win) {
             fin.text = "You win";
         }
         else {
             fin.text = "Game Over";
         }
+		finalPoints.text = finalPoints.text + "" + Global.points;
     }
 
     /*void OnGUI() {

@@ -12,15 +12,16 @@ public class KeyboardManager : MonoBehaviour,  IGazeListener {
 	private string text;
 	private float delay;
 	Camera CamaraPosition;
-
-
+	private Text nameText;
+	private Color bColor = new Color32(174, 181, 181, 255);
+	private GameObject objectObserved;
 	// Use this for initialization
 	void Start () {
 		text = "";
 		delay = 0f;
 		GazeManager.Instance.AddGazeListener(this);
 		CamaraPosition = GameObject.Find ("Main Camera").GetComponent<Camera>();
-
+		nameText = GameObject.Find ("Name").GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
@@ -46,36 +47,65 @@ public class KeyboardManager : MonoBehaviour,  IGazeListener {
 		if (results.Count > 0) {
 			for (int i = 0; i < results.Count; i++) {
 
-				if (delay > waitTime) {
-					if (results [i].gameObject.name == "Save") {
+				if (results [i].gameObject.name == "Save") {
+					results [i].gameObject.GetComponent<Image> ().color = Color.green;
+					objectObserved.gameObject.GetComponent<Image> ().color = Color.green;
+					if (delay > waitTime) {
 						SceneManager.LoadScene ("FinishGame"); 
+					} else {
+						delay += Time.deltaTime;
 					}
+				} else {
+					GameObject.Find ("Save").gameObject.GetComponent<Image> ().color = bColor;
+				}
 
-					if (results [i].gameObject.name == "Delete") {
-
+				if (results [i].gameObject.name == "Delete") {
+					results [i].gameObject.GetComponent<Image> ().color = Color.green;
+					if (delay > waitTime) {
 						try {
 							text = text.Substring (0, text.Length - 1);
+							nameText.text = text;
+
 							delay = 0;
-						} catch (System.Exception e){
+						} catch (System.Exception e) {
 							text = "";
 							delay = 0;
 						}
-
-					}
-
-					if (results [i].gameObject.name == "Space") {
-						text = text + " ";
-						delay = 0;
-					} 
-
-					if (results [i].gameObject.name == "letter") {
-						text += results [i].gameObject.GetComponentInChildren<Text> ().text;
-						delay = 0;
+					} else {
+						delay += Time.deltaTime;
 					}
 				} else {
-					delay += Time.deltaTime;
+					GameObject.Find ("Delete").gameObject.GetComponent<Image> ().color = bColor;
 				}
-				Debug.Log (text);
+
+				if (results [i].gameObject.name == "Space") {
+					results [i].gameObject.GetComponent<Image> ().color = Color.green;
+					if (delay > waitTime) {
+						text = text + " ";
+						delay = 0;
+					} else {
+						delay += Time.deltaTime;
+					}
+				} else {
+					GameObject.Find ("Space").gameObject.GetComponent<Image> ().color = bColor;
+				}
+
+				if (results [i].gameObject.name == "letter") {
+					objectObserved = results [i].gameObject;
+					objectObserved.gameObject.GetComponent<Image> ().color = Color.green;
+					if (delay > waitTime) {
+						text += results [i].gameObject.GetComponentInChildren<Text> ().text;
+						nameText.text = text;
+						delay = 0;
+
+					} else {
+						delay += Time.deltaTime;
+					}
+				} else {
+					if (objectObserved != null && results [i].gameObject != objectObserved) {
+						objectObserved.GetComponent<Image> ().color = bColor;
+					}
+				}
 			}
 		}
 	
@@ -84,13 +114,7 @@ public class KeyboardManager : MonoBehaviour,  IGazeListener {
 	public string getText(){
 		return text;
 	}
-
-	void OnGUI(){
-		GUI.skin.label.fontSize = 50;
-		//cambiar 1000 por tamaño adecuado
-		GUI.Label (new Rect (400, 100, 1000, 1000), getText ());
-	}
-
+		
 	public void OnGazeUpdate(GazeData gazeData)
 	{
 		//Debug.Log ("entreeee");

@@ -45,20 +45,8 @@ public class FinishGameManager : MonoBehaviour,  IGazeListener {
 
 		if (results.Count > 0) {
 			for (int i = 0; i < results.Count; i++) {
-
-				/*if (delay > waitTime) {
-					if (results [i].gameObject.name == "menu") {
-						SceneManager.LoadScene ("MainMenu"); 
-					} 
-					if (results [i].gameObject.name == "keyboard") {
-						SceneManager.LoadScene ("Keyboard"); 
-					}
-				} else {
-					delay += Time.deltaTime;
-				}*/
 				if (results [i].gameObject.name == "menu") {
 					text.color = Color.blue;
-						//new Color(0,55,0,255);
 					if (delay > waitTime) {
 						SceneManager.LoadScene ("MainMenu"); 
 					} else {
