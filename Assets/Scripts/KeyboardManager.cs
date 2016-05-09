@@ -8,8 +8,9 @@ using TETCSharpClient;
 using TETCSharpClient.Data;
 
 public class KeyboardManager : MonoBehaviour,  IGazeListener {
+	public static KeyboardManager keyboardManager;
 	private float waitTime = 0.9f;
-	private string text;
+	private string text = "";
 	private float delay;
 	Camera CamaraPosition;
 	private Text nameText;
@@ -17,6 +18,13 @@ public class KeyboardManager : MonoBehaviour,  IGazeListener {
 	private GameObject objectObserved;
 	// Use this for initialization
 	void Start () {
+		if (keyboardManager == null) {
+			keyboardManager = this;
+			DontDestroyOnLoad (gameObject);
+		} 
+		else {
+			Destroy (gameObject);
+		}
 		text = "";
 		delay = 0f;
 		GazeManager.Instance.AddGazeListener(this);
@@ -114,7 +122,11 @@ public class KeyboardManager : MonoBehaviour,  IGazeListener {
 	public string getText(){
 		return text;
 	}
-		
+
+	public void setText(string tex){
+		this.text = tex;
+	}
+
 	public void OnGazeUpdate(GazeData gazeData)
 	{
 		//Debug.Log ("entreeee");

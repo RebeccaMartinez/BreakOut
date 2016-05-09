@@ -8,6 +8,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 using TETCSharpClient;
 using TETCSharpClient.Data;
 using System;
@@ -43,6 +44,7 @@ public class CalibCamera : MonoBehaviour, IGazeListener, ICalibrationProcessHand
     private const int NUM_MAX_CALIBRATION_ATTEMPTS = 3;
     private const int NUM_MAX_RESAMPLE_POINTS = 4;
     private int _ResampleCount;
+
 
     void Start()
     {
@@ -90,6 +92,13 @@ public class CalibCamera : MonoBehaviour, IGazeListener, ICalibrationProcessHand
 
     void Update()
     {
+		if (GameObject.Find ("Toggle") != null && GameObject.Find ("Toggle").GetComponentInChildren<Toggle> ().isOn == false) {
+			Global.saveData = false;
+		} 
+		if(GameObject.Find ("Toggle") != null && GameObject.Find ("Toggle").GetComponentInChildren<Toggle> ().isOn == true) {
+			Global.saveData = true;
+		}
+
         if (!GazeManager.Instance.IsCalibrating)
         {
             //Set eyes size based on distance
@@ -248,6 +257,7 @@ public class CalibCamera : MonoBehaviour, IGazeListener, ICalibrationProcessHand
 
                 if (GUI.Button(new Rect(x + btnPadding, y + btnPadding, btnWidth, btnHeight), btnText))
                 {
+					Destroy (GameObject.Find ("Toggle"));
                     //Start new calibration
                     GenerateCalibrationPoints();
                     GazeManager.Instance.CalibrationStart(9, this);

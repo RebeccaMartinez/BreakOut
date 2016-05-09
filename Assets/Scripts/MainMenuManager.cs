@@ -11,7 +11,6 @@ using TETCSharpClient.Data;
 
 public class MainMenuManager : MonoBehaviour, IGazeListener {
 	private float waitTimeButtons = 1f;
-	private float waitTimeToggle = 3f;
 	private float delay;
 	Camera CamaraPosition;
 	private Text playText;
@@ -21,14 +20,16 @@ public class MainMenuManager : MonoBehaviour, IGazeListener {
 	// Use this for initialization
 	void Start () {
 		delay = 0f;
-		GazeManager.Instance.AddGazeListener(this);
-		CamaraPosition = GameObject.Find ("Main Camera").GetComponent<Camera>();
-		playText = GameObject.Find ("Play").GetComponent<Text>();
-		scoreText = GameObject.Find ("Score").GetComponent<Text>();
-		exitText = GameObject.Find ("Exit").GetComponent<Text>();
+		GazeManager.Instance.AddGazeListener (this);
+		CamaraPosition = GameObject.Find ("Main Camera").GetComponent<Camera> ();
+		playText = GameObject.Find ("Play").GetComponent<Text> ();
+		scoreText = GameObject.Find ("Score").GetComponent<Text> ();
+		exitText = GameObject.Find ("Exit").GetComponent<Text> ();
+		Global.points = 0;
+		Global.lives = 5;
+		Global.win = false;
+
 	}
-
-
 	// Update is called once per frame
 	void Update () {
 		Point2D gazeCoords = GazeDataValidator.Instance.GetLastValidSmoothedGazeCoordinates();
@@ -51,26 +52,6 @@ public class MainMenuManager : MonoBehaviour, IGazeListener {
 
 		if (results.Count > 0) {
 			for (int i = 0; i < results.Count; i++) {
-
-				/*if (delay > waitTimeButtons) {
-					if (results [i].gameObject.name == "Play") {
-						SceneManager.LoadScene ("Level1"); 
-					} 
-				} else {
-					delay += Time.deltaTime;
-				}
-				if (delay > waitTimeToggle) {
-					if (results [i].gameObject.name == "Toggle") {
-						if (changeSaveData () == false) {
-							results [i].gameObject.GetComponentInChildren<Toggle> ().isOn = false;
-						} else {
-							results [i].gameObject.GetComponentInChildren<Toggle> ().isOn = true;
-						}
-						delay = 0;
-					}
-				} else {
-					delay += Time.deltaTime;
-				}*/
 				if (results [i].gameObject.name == "Play") {
 					playText.color = Color.blue;
 					if (delay > waitTimeButtons) {
@@ -103,35 +84,14 @@ public class MainMenuManager : MonoBehaviour, IGazeListener {
 				} else {
 					exitText.color = Color.white;
 				}
-
-				if (results [i].gameObject.name == "Toggle") {
-					if (delay > waitTimeToggle) {
-						if (changeSaveData () == false) {
-							results [i].gameObject.GetComponentInChildren<Toggle> ().isOn = false;
-						} else {
-							results [i].gameObject.GetComponentInChildren<Toggle> ().isOn = true;
-						}
-						delay = 0;
-					} else {
-						delay += Time.deltaTime;
-					}
+				if (results [i].gameObject.name != "Play" && results [i].gameObject.name != "Score" && results [i].gameObject.name != "Exit") {
+					delay = 0;
 				}
-
 			}
 		}
 
 	}
 
-	public bool changeSaveData(){
-		if (Global.saveData == true) {
-			Global.saveData = false;
-			return false;
-		} 
-		else {
-			Global.saveData = true;
-			return true;
-		}
-	}
 
 	public void exitGame() {
 		Application.Quit();

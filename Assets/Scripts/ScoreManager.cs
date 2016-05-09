@@ -2,25 +2,24 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using TETCSharpClient;
 using TETCSharpClient.Data;
-using BreakOut;
 
 
-public class FinishGameManager : MonoBehaviour,  IGazeListener {
-	
-	private float waitTime = 0.6f;
+public class ScoreManager : MonoBehaviour, IGazeListener {
+	private float waitTimeButtons = .3f;
 	private float delay;
 	Camera CamaraPosition;
-	private Text text;  
+	private Text backText;
+
 	// Use this for initialization
 	void Start () {
 		delay = 0f;
 		GazeManager.Instance.AddGazeListener(this);
 		CamaraPosition = GameObject.Find ("Main Camera").GetComponent<Camera>();
-		text = GameObject.Find ("menu").GetComponent<Text>();
+		backText = GameObject.Find ("Back").GetComponent<Text>();
 
 	}
 	
@@ -39,46 +38,30 @@ public class FinishGameManager : MonoBehaviour,  IGazeListener {
 		else {
 			point.position = Input.mousePosition;
 		}
+
 		//result will contain all of the hit canvas
 		List<RaycastResult> results = new List<RaycastResult> ();
 		gr.Raycast (point, results);
 
-
-		if (results.Count > 0) {
-			for (int i = 0; i < results.Count; i++) {
-				if (results [i].gameObject.name == "menu") {
-					text.color = Color.blue;
-					if (delay > waitTime) {
-						try{
-							if(KeyboardManager.keyboardManager.getText() != ""){
-								SavePoints.pointsInstance.Save (new PlayerPoints(KeyboardManager.keyboardManager.getText(), Global.points));
-								KeyboardManager.keyboardManager.setText("");
-								SceneManager.LoadScene ("MainMenu"); 
-							}
-						} catch(System.Exception e){
-							SceneManager.LoadScene ("MainMenu"); 
-						}
-
+		if (results.Count > 0) {				
+				if (results [0].gameObject.name == "Back") {
+					backText.color = Color.green;
+					if (delay > waitTimeButtons) {
+						SceneManager.LoadScene ("MainMenu");
 					} else {
 						delay += Time.deltaTime;
 					}
-
 				} else {
-					text.color = Color.white;
-
-				}
-				if(results [i].gameObject.name == "keyboard"){
-					if (delay > waitTime) {
-						SceneManager.LoadScene ("Keyboard"); 
-					} else {
-						delay += Time.deltaTime;
-					}
+					backText.color = Color.white;
+					delay = 0;
 				}
 
-			}
+
 		}
 	}
-		
+
+
+
 	public void OnGazeUpdate(GazeData gazeData)
 	{
 		//Debug.Log ("entreeee");
@@ -86,4 +69,10 @@ public class FinishGameManager : MonoBehaviour,  IGazeListener {
 		GazeDataValidator.Instance.Update(gazeData);
 	}
 
+	void OnApplicationQuit()
+	{
+		GazeManager.Instance.RemoveGazeListener(this);
+		GazeManager.Instance.Deactivate();
+	}
 }
+
